@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: supply-chain-tracking
+
+security:
+  jwt:
+    secret-key: gReEnWeB-ExP
+    access-token-expiration: 3600000
+    refresh-token-expiration: 86400000
+    skipped-endpoints:
+      - /api/auth/login
+      - /api/auth/users
+      - /api/auth/access-token

@@ -20,6 +20,10 @@
     <dependencies>
         <dependency>
             <groupId>ir.greenweb.examples.supply-chain-tracking</groupId>
+            <artifactId>contract</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ir.greenweb.examples.supply-chain-tracking</groupId>
             <artifactId>persistence</artifactId>
         </dependency>
         <dependency>
@@ -46,6 +50,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

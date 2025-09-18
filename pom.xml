@@ -14,31 +14,32 @@
     <packaging>pom</packaging>
     <name>supply-chain-tracking</name>
     <description>supply-chain-tracking</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
     <developers>
-        <developer/>
+        <developer>
+            <name>Payam Mostafaei</name>
+        </developer>
     </developers>
     <modules>
+        <module>contract</module>
         <module>persistence</module>
         <module>business</module>
         <module>presentation</module>
         <module>application</module>
     </modules>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
     <properties>
         <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>ir.greenweb.examples.supply-chain-tracking</groupId>
+                <artifactId>contract</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
             <dependency>
                 <groupId>ir.greenweb.examples.supply-chain-tracking</groupId>
                 <artifactId>persistence</artifactId>
@@ -78,6 +79,11 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>1.6.3</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

@@ -1,5 +1,6 @@
 package ir.greenweb.examples.supplychaintracking.persistence.entity;
 
+import ir.greenweb.examples.supplychaintracking.contract.enumeration.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

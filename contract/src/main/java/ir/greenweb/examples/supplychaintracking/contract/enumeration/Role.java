@@ -1,4 +1,4 @@
-package ir.greenweb.examples.supplychaintracking.persistence.entity;
+package ir.greenweb.examples.supplychaintracking.contract.enumeration;
 
 public enum Role {
     MANUFACTURER,
