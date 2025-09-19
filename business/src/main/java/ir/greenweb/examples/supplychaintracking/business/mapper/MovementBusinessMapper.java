@@ -12,8 +12,8 @@ import org.mapstruct.Mapper;
 import java.util.List;
 import java.util.UUID;
 
-@Mapper
-public interface MovementMapper {
+@Mapper(componentModel = "spring")
+public interface MovementBusinessMapper {
     MovementDto toMovementDto(MovementCreationRequest movementCreationRequest);
     MovementFilterDto toMovementFilterDto(ProductMovementsGetRequest productMovementsGetRequest);
     ProductMovementsGetResponse toProductMovementsGetResponse(MovementsDto movementsDto);

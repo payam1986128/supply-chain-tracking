@@ -9,8 +9,8 @@ import org.mapstruct.Mapper;
 import java.util.List;
 import java.util.UUID;
 
-@Mapper
-public interface ProductMapper {
+@Mapper(componentModel = "spring")
+public interface ProductBusinessMapper {
     ProductGetResponse toProductGetResponse(ProductDto product);
     ProductFilterDto toProductFilterDto(ProductsGetRequest productsGetRequest);
     ProductsGetResponse toProductsGetResponse(ProductsDto products);

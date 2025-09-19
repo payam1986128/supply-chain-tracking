@@ -5,7 +5,7 @@ import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.Movemen
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.MovementFilterDto;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.MovementsDto;
 import ir.greenweb.examples.supplychaintracking.persistence.entity.Movement;
-import ir.greenweb.examples.supplychaintracking.persistence.mapper.MovementMapper;
+import ir.greenweb.examples.supplychaintracking.persistence.mapper.MovementPersistenceMapper;
 import ir.greenweb.examples.supplychaintracking.persistence.repository.MovementRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,7 +20,7 @@ import java.util.UUID;
 public class MovementDao implements MovementDaoApi {
 
     private final MovementRepository movementRepository;
-    private final MovementMapper movementMapper;
+    private final MovementPersistenceMapper movementMapper;
 
     @Override
     public UUID create(MovementDto movementDto) {

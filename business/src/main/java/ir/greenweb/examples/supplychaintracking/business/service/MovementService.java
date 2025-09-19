@@ -2,14 +2,13 @@ package ir.greenweb.examples.supplychaintracking.business.service;
 
 import ir.greenweb.examples.supplychaintracking.business.exception.InvalidUUIDException;
 import ir.greenweb.examples.supplychaintracking.business.exception.ProductNotFoundException;
-import ir.greenweb.examples.supplychaintracking.business.mapper.MovementMapper;
+import ir.greenweb.examples.supplychaintracking.business.mapper.MovementBusinessMapper;
 import ir.greenweb.examples.supplychaintracking.contract.business.MovementServiceApi;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.MovementDaoApi;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.ProductDaoApi;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.MovementDto;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.MovementFilterDto;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.MovementsDto;
-import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.ProductDto;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.movement.MovementCreationRequest;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.movement.MovementCreationResponse;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.movement.ProductMovementsGetRequest;
@@ -18,7 +17,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -27,7 +25,7 @@ public class MovementService implements MovementServiceApi {
 
     private final MovementDaoApi movementDao;
     private final ProductDaoApi productDao;
-    private final MovementMapper movementMapper;
+    private final MovementBusinessMapper movementMapper;
 
     @Override
     public MovementCreationResponse logMovement(String productIdString, MovementCreationRequest request) {

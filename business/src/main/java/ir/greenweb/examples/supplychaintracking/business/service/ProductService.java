@@ -8,7 +8,7 @@ import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.Product
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.product.*;
 import ir.greenweb.examples.supplychaintracking.business.exception.InvalidUUIDException;
 import ir.greenweb.examples.supplychaintracking.business.exception.ProductNotFoundException;
-import ir.greenweb.examples.supplychaintracking.business.mapper.ProductMapper;
+import ir.greenweb.examples.supplychaintracking.business.mapper.ProductBusinessMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +22,7 @@ import java.util.UUID;
 public class ProductService implements ProductServiceApi {
 
     private final ProductDaoApi productDao;
-    private final ProductMapper productMapper;
+    private final ProductBusinessMapper productMapper;
 
     @Override
     public ProductGetResponse getProduct(String id) {

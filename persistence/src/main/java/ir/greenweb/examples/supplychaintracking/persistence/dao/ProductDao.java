@@ -5,7 +5,7 @@ import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.Product
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.ProductFilterDto;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.ProductsDto;
 import ir.greenweb.examples.supplychaintracking.persistence.entity.Product;
-import ir.greenweb.examples.supplychaintracking.persistence.mapper.ProductMapper;
+import ir.greenweb.examples.supplychaintracking.persistence.mapper.ProductPersistenceMapper;
 import ir.greenweb.examples.supplychaintracking.persistence.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,7 +21,7 @@ import java.util.UUID;
 public class ProductDao implements ProductDaoApi {
 
     private final ProductRepository productRepository;
-    private final ProductMapper productMapper;
+    private final ProductPersistenceMapper productMapper;
 
 
     @Override

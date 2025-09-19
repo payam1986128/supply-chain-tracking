@@ -5,8 +5,8 @@ import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.C
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.UserDetailsDto;
 import org.mapstruct.Mapper;
 
-@Mapper
-public interface UserMapper {
+@Mapper(componentModel = "spring")
+public interface UserBusinessMapper {
     UserDto toUserDto(CreateUserRequest createUserRequest);
     UserDetailsDto toUserDetailsDto(UserDto userDto);
 }

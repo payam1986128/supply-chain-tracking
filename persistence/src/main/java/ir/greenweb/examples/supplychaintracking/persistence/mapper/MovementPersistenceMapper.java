@@ -7,8 +7,8 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper
-public interface MovementMapper {
+@Mapper(componentModel = "spring")
+public interface MovementPersistenceMapper {
     @Mapping(target = "product.id", source = "productId")
     Movement toMovement(MovementDto movementDto);
 

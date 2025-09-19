@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper
-public interface ProductMapper {
+@Mapper(componentModel = "spring")
+public interface ProductPersistenceMapper {
     List<ProductDto> toProductsDto(List<Product> products);
     ProductDto toProductDto(Product product);
     Product toProduct(ProductDto productDto);
