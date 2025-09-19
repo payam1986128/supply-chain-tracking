@@ -3,12 +3,17 @@ package ir.greenweb.examples.supplychaintracking.presentation;
 import ir.greenweb.examples.supplychaintracking.business.exception.EntityNotFoundException;
 import ir.greenweb.examples.supplychaintracking.business.exception.HandledException;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.exception.ExceptionDto;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class RestExceptionHandler {
@@ -23,6 +28,17 @@ public class RestExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     public ExceptionDto handleException(AccessDeniedException ex) {
         return new ExceptionDto(ex.getClass().getSimpleName(), ex.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ExceptionDto handleValidationExceptions(MethodArgumentNotValidException ex) {
+        return new ExceptionDto(
+                ex.getClass().getSimpleName(),
+                "Please correct your request",
+                ex.getBindingResult().getAllErrors().stream()
+                        .collect(Collectors.toMap(e -> ((FieldError) e).getField(), DefaultMessageSourceResolvable::getDefaultMessage))
+        );
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)

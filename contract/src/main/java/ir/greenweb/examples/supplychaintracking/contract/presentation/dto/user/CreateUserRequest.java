@@ -9,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreateUserRequest {
-    private String id;
 
     @Size(min = 3, max = 20)
     private String username;
