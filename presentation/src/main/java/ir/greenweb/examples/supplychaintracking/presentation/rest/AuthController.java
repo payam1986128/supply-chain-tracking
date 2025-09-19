@@ -9,10 +9,8 @@ import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.C
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.CreateUserResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -22,16 +20,19 @@ public class AuthController {
     private AuthServiceApi authService;
 
     @PostMapping("/users")
+    @ResponseStatus(HttpStatus.CREATED)
     public CreateUserResponse createUser(@Valid @RequestBody CreateUserRequest request) {
         return authService.createUser(request);
     }
 
     @PostMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
     public AuthResponse login(@Valid @RequestBody AuthRequest authRequest) {
         return authService.login(authRequest);
     }
 
     @PostMapping("/refresh-token")
+    @ResponseStatus(HttpStatus.OK)
     public RefreshTokenResponse refreshToken(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
         return authService.refreshToken(refreshTokenRequest.getRefreshToken());
     }
