@@ -7,6 +7,7 @@ import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.moveme
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.movement.ProductMovementsGetRequest;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.movement.ProductMovementsGetResponse;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.product.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,19 +28,19 @@ public class ProductController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public ProductsGetResponse getProducts(ProductsGetRequest request) {
+    public ProductsGetResponse getProducts(@Valid ProductsGetRequest request) {
         return productService.getProducts(request);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductCreationResponse create(@RequestBody ProductCreationRequest request) {
+    public ProductCreationResponse create(@Valid @RequestBody ProductCreationRequest request) {
         return productService.create(request);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable("id") String id, @RequestBody ProductEditionRequest request) {
+    public void update(@PathVariable("id") String id, @Valid @RequestBody ProductEditionRequest request) {
         productService.update(id, request);
     }
 
@@ -51,13 +52,13 @@ public class ProductController {
 
     @PostMapping("/{id}/movements")
     @ResponseStatus(HttpStatus.CREATED)
-    public MovementCreationResponse logMovement(@PathVariable("id") String productId, @RequestBody MovementCreationRequest request) {
+    public MovementCreationResponse logMovement(@PathVariable("id") String productId, @Valid @RequestBody MovementCreationRequest request) {
         return movementService.logMovement(productId, request);
     }
 
     @GetMapping("/{id}/movements")
     @ResponseStatus(HttpStatus.OK)
-    public ProductMovementsGetResponse getMovements(@PathVariable("id") String productId, ProductMovementsGetRequest request) {
+    public ProductMovementsGetResponse getMovements(@PathVariable("id") String productId, @Valid ProductMovementsGetRequest request) {
         return movementService.getMovements(productId, request);
     }
 }

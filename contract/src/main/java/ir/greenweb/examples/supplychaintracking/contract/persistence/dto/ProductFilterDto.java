@@ -1,5 +1,6 @@
 package ir.greenweb.examples.supplychaintracking.contract.persistence.dto;
 
+import ir.greenweb.examples.supplychaintracking.contract.enumeration.SortDirection;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ public class ProductFilterDto {
     private int page;
     private int pageSize;
     private String sort;
-    private String sortDirection;
+    private SortDirection sortDirection;
     private String type;
     private LocalDateTime manufacturingDateFrom;
     private LocalDateTime manufacturingDateTo;

@@ -32,8 +32,12 @@ public class ProductDao implements ProductDaoApi {
 
     @Override
     public ProductsDto getProducts(ProductFilterDto filter) {
-        Page<Product> productsPage = productRepository.filter(filter.getType(), filter.getManufacturingDateFrom(), filter.getManufacturingDateTo(), filter.getOrigin(),
-                PageRequest.of(filter.getPage(), filter.getPageSize(), Sort.by(Sort.Direction.valueOf(filter.getSortDirection()), filter.getSort())));
+        PageRequest pageRequest = PageRequest.of(filter.getPage()-1, filter.getPageSize());
+        if (filter.getSort() != null && filter.getSortDirection() != null) {
+            pageRequest.withSort(Sort.Direction.valueOf(filter.getSortDirection().name()), filter.getSort());
+        }
+        Page<Product> productsPage = productRepository.filter(filter.getType(), filter.getManufacturingDateFrom(),
+                filter.getManufacturingDateTo(), filter.getOrigin(), pageRequest);
         return ProductsDto.builder()
                 .products(productMapper.toProductsDto(productsPage.getContent()))
                 .total(productsPage.getSize())

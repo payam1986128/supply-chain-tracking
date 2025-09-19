@@ -7,6 +7,7 @@ import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.auth.R
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.auth.RefreshTokenResponse;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.CreateUserRequest;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.CreateUserResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,17 +22,17 @@ public class AuthController {
     private AuthServiceApi authService;
 
     @PostMapping("/users")
-    public CreateUserResponse createUser(@RequestBody CreateUserRequest request) {
+    public CreateUserResponse createUser(@Valid @RequestBody CreateUserRequest request) {
         return authService.createUser(request);
     }
 
     @PostMapping("/login")
-    public AuthResponse login(@RequestBody AuthRequest authRequest) {
+    public AuthResponse login(@Valid @RequestBody AuthRequest authRequest) {
         return authService.login(authRequest);
     }
 
     @PostMapping("/access-token")
-    public RefreshTokenResponse getAccessToken(@RequestBody RefreshTokenRequest refreshTokenRequest) {
+    public RefreshTokenResponse getAccessToken(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
         return authService.refreshToken(refreshTokenRequest.getRefreshToken());
     }
 }

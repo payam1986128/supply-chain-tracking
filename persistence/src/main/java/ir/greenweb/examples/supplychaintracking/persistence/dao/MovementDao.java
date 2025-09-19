@@ -31,8 +31,11 @@ public class MovementDao implements MovementDaoApi {
 
     @Override
     public MovementsDto filter(MovementFilterDto filter) {
-        Page<Movement> movementsPage = movementRepository.filter(filter.getProductId(), filter.getTimeFrom(), filter.getTimeTo(),
-                PageRequest.of(filter.getPage(), filter.getPageSize(), Sort.by(Sort.Direction.valueOf(filter.getSortDirection()), filter.getSort())));
+        PageRequest pageRequest = PageRequest.of(filter.getPage()-1, filter.getPageSize());
+        if (filter.getSort() != null && filter.getSortDirection() != null) {
+            pageRequest.withSort(Sort.Direction.valueOf(filter.getSortDirection().name()), filter.getSort());
+        }
+        Page<Movement> movementsPage = movementRepository.filter(filter.getProductId(), filter.getTimeFrom(), filter.getTimeTo(), pageRequest);
         return MovementsDto.builder()
                 .movements(movementMapper.toMovementsDto(movementsPage.getContent()))
                 .total(movementsPage.getSize())
