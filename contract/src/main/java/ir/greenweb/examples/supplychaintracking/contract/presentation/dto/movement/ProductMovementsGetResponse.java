@@ -9,5 +9,5 @@ import java.util.List;
 @Builder
 public class ProductMovementsGetResponse {
     private List<ProductMovementDto> movements;
-    private int total;
+    private long total;
 }

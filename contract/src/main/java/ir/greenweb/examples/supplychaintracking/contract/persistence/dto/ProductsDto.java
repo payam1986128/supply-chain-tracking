@@ -11,5 +11,5 @@ import java.util.List;
 @Builder
 public class ProductsDto {
     private List<ProductDto> products;
-    private int total;
+    private long total;
 }

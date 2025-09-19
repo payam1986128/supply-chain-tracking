@@ -17,4 +17,6 @@ public class ProductEditionRequest {
     private LocalDateTime manufacturingDate;
 
     private String origin;
+
+    private int version;
 }

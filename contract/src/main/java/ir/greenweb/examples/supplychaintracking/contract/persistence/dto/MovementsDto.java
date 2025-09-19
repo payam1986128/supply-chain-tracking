@@ -11,5 +11,5 @@ import java.util.List;
 @Builder
 public class MovementsDto {
     private List<MovementDto> movements;
-    private int total;
+    private long total;
 }

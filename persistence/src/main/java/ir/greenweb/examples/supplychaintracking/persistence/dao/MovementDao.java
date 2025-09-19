@@ -1,10 +1,12 @@
 package ir.greenweb.examples.supplychaintracking.persistence.dao;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.MovementDaoApi;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.MovementDto;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.MovementFilterDto;
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.MovementsDto;
 import ir.greenweb.examples.supplychaintracking.persistence.entity.Movement;
+import ir.greenweb.examples.supplychaintracking.persistence.entity.QMovement;
 import ir.greenweb.examples.supplychaintracking.persistence.mapper.MovementPersistenceMapper;
 import ir.greenweb.examples.supplychaintracking.persistence.repository.MovementRepository;
 import lombok.AllArgsConstructor;
@@ -13,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Component
@@ -35,10 +38,20 @@ public class MovementDao implements MovementDaoApi {
         if (filter.getSort() != null && filter.getSortDirection() != null) {
             pageRequest.withSort(Sort.Direction.valueOf(filter.getSortDirection().name()), filter.getSort());
         }
-        Page<Movement> movementsPage = movementRepository.filter(filter.getProductId(), filter.getTimeFrom(), filter.getTimeTo(), pageRequest);
+        BooleanExpression predicate = QMovement.movement.time.before(LocalDateTime.now());
+        if (filter.getProductId() != null) {
+            predicate = predicate.and(QMovement.movement.product.id.eq(filter.getProductId()));
+        }
+        if (filter.getTimeFrom() != null) {
+            predicate = predicate.and(QMovement.movement.time.after(filter.getTimeFrom()));
+        }
+        if (filter.getTimeTo() != null) {
+            predicate = predicate.and(QMovement.movement.time.before(filter.getTimeTo()));
+        }
+        Page<Movement> movementsPage = movementRepository.findAll(predicate, pageRequest);
         return MovementsDto.builder()
                 .movements(movementMapper.toMovementsDto(movementsPage.getContent()))
-                .total(movementsPage.getSize())
+                .total(movementsPage.getTotalElements())
                 .build();
     }
 }

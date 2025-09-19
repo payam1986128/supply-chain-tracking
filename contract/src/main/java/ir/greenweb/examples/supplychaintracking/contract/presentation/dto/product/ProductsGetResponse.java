@@ -9,5 +9,5 @@ import java.util.List;
 @Setter
 public class ProductsGetResponse {
     private List<ProductAbstractDto> products;
-    private int total;
+    private long total;
 }

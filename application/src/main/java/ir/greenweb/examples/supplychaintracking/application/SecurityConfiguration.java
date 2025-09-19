@@ -40,6 +40,7 @@ class SecurityConfiguration {
                                     "/swagger-ui/**"
                                 ).permitAll()
                                 .requestMatchers("/api/products").hasAuthority("MANUFACTURER")
+                                .requestMatchers("/api/products?**").hasAuthority("MANUFACTURER")
                                 .requestMatchers("/api/products/{id}").hasAuthority("MANUFACTURER")
                                 .requestMatchers(HttpMethod.POST, "/api/products/{id}/movements").hasAuthority("LOGISTICS_PROVIDER")
                                 .requestMatchers(HttpMethod.GET, "/api/products/{id}/movements").hasAuthority("AUDITOR")

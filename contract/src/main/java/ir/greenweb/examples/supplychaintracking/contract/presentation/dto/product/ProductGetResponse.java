@@ -12,4 +12,5 @@ public class ProductGetResponse {
     private String type;
     private LocalDateTime manufacturingDate;
     private String origin;
+    private int version;
 }

@@ -18,6 +18,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String type;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime manufacturingDate;
     private String origin;
 

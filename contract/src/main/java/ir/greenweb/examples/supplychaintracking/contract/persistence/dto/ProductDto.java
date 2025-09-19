@@ -13,4 +13,5 @@ public class ProductDto {
     private String type;
     private LocalDateTime manufacturingDate;
     private String origin;
+    private int version;
 }
