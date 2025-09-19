@@ -4,6 +4,7 @@ import ir.greenweb.examples.supplychaintracking.presentation.filter.JwtTokenFilt
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -33,7 +34,10 @@ class SecurityConfiguration {
                 .authorizeHttpRequests(
                         req -> req.requestMatchers("/api/auth/login/**", "/api/auth/users", "/api/auth/access-token")
                                 .permitAll()
-                                .requestMatchers("/admin/**").hasAuthority("ADMIN")
+                                .requestMatchers("/api/products").hasAuthority("MANUFACTURER")
+                                .requestMatchers("/api/products/{id}").hasAuthority("MANUFACTURER")
+                                .requestMatchers(HttpMethod.POST, "/api/products/{id}/movements").hasAuthority("LOGISTICS_PROVIDER")
+                                .requestMatchers(HttpMethod.GET, "/api/products/{id}/movements").hasAuthority("AUDITOR")
                                 .anyRequest().authenticated()
                 ).userDetailsService(userDetailsService)
                 .sessionManagement(session -> session

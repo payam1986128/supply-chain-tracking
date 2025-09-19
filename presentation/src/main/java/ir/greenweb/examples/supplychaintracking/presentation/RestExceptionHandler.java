@@ -1,6 +1,7 @@
 package ir.greenweb.examples.supplychaintracking.presentation;
 
-import ir.greenweb.examples.supplychaintracking.persistence.business.exception.HandledException;
+import ir.greenweb.examples.supplychaintracking.business.exception.EntityNotFoundException;
+import ir.greenweb.examples.supplychaintracking.business.exception.HandledException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
@@ -20,6 +21,12 @@ public class RestExceptionHandler {
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ExceptionHandler(AccessDeniedException.class)
     public void handleException(AccessDeniedException ex) {
+
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(EntityNotFoundException.class)
+    public void handleException(EntityNotFoundException ex) {
 
     }
 

@@ -1,4 +1,4 @@
-package ir.greenweb.examples.supplychaintracking.persistence.business.service;
+package ir.greenweb.examples.supplychaintracking.business.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

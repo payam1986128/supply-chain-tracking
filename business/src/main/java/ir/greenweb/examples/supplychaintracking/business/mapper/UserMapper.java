@@ -1,4 +1,4 @@
-package ir.greenweb.examples.supplychaintracking.persistence.business.mapper;
+package ir.greenweb.examples.supplychaintracking.business.mapper;
 
 import ir.greenweb.examples.supplychaintracking.contract.persistence.dto.UserDto;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.CreateUserRequest;

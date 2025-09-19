@@ -8,10 +8,12 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class MovementDto {
-    private UUID id;
+public class MovementFilterDto {
+    private int page;
+    private int pageSize;
+    private String sort;
+    private String sortDirection;
     private UUID productId;
-    private LocationDto sourceLocation;
-    private LocationDto destinationLocation;
-    private LocalDateTime time;
+    private LocalDateTime timeFrom;
+    private LocalDateTime timeTo;
 }

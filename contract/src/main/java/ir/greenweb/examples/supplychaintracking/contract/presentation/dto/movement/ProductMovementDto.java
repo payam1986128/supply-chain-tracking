@@ -1,16 +1,15 @@
-package ir.greenweb.examples.supplychaintracking.contract.persistence.dto;
+package ir.greenweb.examples.supplychaintracking.contract.presentation.dto.movement;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
-public class MovementDto {
-    private UUID id;
-    private UUID productId;
+public class ProductMovementDto {
+    private String id;
+    private String productId;
     private LocationDto sourceLocation;
     private LocationDto destinationLocation;
     private LocalDateTime time;

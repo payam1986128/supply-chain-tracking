@@ -1,4 +1,4 @@
-package ir.greenweb.examples.supplychaintracking.persistence.business.exception;
+package ir.greenweb.examples.supplychaintracking.business.exception;
 
 import org.springframework.security.core.AuthenticationException;
 
