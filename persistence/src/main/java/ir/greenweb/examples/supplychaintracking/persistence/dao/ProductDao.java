@@ -69,6 +69,7 @@ public class ProductDao implements ProductDaoApi {
     @Override
     public void editProduct(UUID id, ProductDto productDto) {
         Product product = productMapper.toProduct(productDto);
+        product.setId(id);
         productRepository.save(product);
     }
 
