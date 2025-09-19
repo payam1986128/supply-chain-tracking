@@ -1,0 +1,11 @@
+services:
+  postgresql:
+    image: postgres
+    container_name: postgresql
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: sct
+    ports:
+      - "5432:5432"
+    restart: unless-stopped

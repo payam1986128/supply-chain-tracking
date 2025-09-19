@@ -10,7 +10,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(indexes = {
+@Table(name = "sct_user", indexes = {
         @Index(name = "uniqueUsername", columnList = "username", unique = true)
 })
 public class User {
