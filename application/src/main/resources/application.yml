@@ -22,3 +22,7 @@ security:
       - /api/auth/login
       - /api/auth/users
       - /api/auth/access-token
+
+server:
+  servlet:
+    context-path: /api
