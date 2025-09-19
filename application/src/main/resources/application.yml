@@ -16,10 +16,10 @@ spring:
 
 security:
   jwt:
-    secret-key: gReEnWeB-ExP
+    secret-key: Z1JlRW5XZUItRXhBbVBMZS1TdXBMeS1DSGFpTi10UkFjS2lOZw==
     access-token-expiration: 3600000
     refresh-token-expiration: 86400000
     skipped-endpoints:
       - /api/auth/login
       - /api/auth/users
-      - /api/auth/access-token
+      - /api/auth/refresh-token

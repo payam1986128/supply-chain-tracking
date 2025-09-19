@@ -31,8 +31,8 @@ public class AuthController {
         return authService.login(authRequest);
     }
 
-    @PostMapping("/access-token")
-    public RefreshTokenResponse getAccessToken(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
+    @PostMapping("/refresh-token")
+    public RefreshTokenResponse refreshToken(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
         return authService.refreshToken(refreshTokenRequest.getRefreshToken());
     }
 }

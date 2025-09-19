@@ -35,7 +35,7 @@ class SecurityConfiguration {
                         req -> req.requestMatchers(
                                     "/api/auth/login/**",
                                     "/api/auth/users",
-                                    "/api/auth/access-token",
+                                    "/api/auth/refresh-token",
                                     "/v3/api-docs*/**",
                                     "/swagger-ui/**"
                                 ).permitAll()
