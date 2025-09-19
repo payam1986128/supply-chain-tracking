@@ -9,3 +9,8 @@ services:
     ports:
       - "5432:5432"
     restart: unless-stopped
+
+  supply-chain-tracking-app:
+    build: .
+    ports:
+      - 8080:8080
