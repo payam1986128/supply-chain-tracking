@@ -4,10 +4,10 @@ import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.auth.A
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.auth.AuthResponse;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.auth.RefreshTokenResponse;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.CreateUserRequest;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.CreateUserResponse;
 
-public interface UserServiceApi extends UserDetailsService {
-    void createUser(CreateUserRequest user);
+public interface AuthServiceApi {
+    CreateUserResponse createUser(CreateUserRequest user);
     AuthResponse login(AuthRequest request);
     RefreshTokenResponse refreshToken(String refreshToken);
 }

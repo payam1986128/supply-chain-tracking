@@ -1,11 +1,12 @@
 package ir.greenweb.examples.supplychaintracking.presentation.rest;
 
-import ir.greenweb.examples.supplychaintracking.contract.business.UserServiceApi;
+import ir.greenweb.examples.supplychaintracking.contract.business.AuthServiceApi;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.auth.AuthRequest;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.auth.AuthResponse;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.auth.RefreshTokenRequest;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.auth.RefreshTokenResponse;
 import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.CreateUserRequest;
+import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.user.CreateUserResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,20 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class AuthController {
 
-    private UserServiceApi userService;
+    private AuthServiceApi authService;
 
     @PostMapping("/users")
-    public void createUser(@RequestBody CreateUserRequest request) {
-        userService.createUser(request);
+    public CreateUserResponse createUser(@RequestBody CreateUserRequest request) {
+        return authService.createUser(request);
     }
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest authRequest) {
-        return userService.login(authRequest);
+        return authService.login(authRequest);
     }
 
     @PostMapping("/access-token")
     public RefreshTokenResponse getAccessToken(@RequestBody RefreshTokenRequest refreshTokenRequest) {
-        return userService.refreshToken(refreshTokenRequest.getRefreshToken());
+        return authService.refreshToken(refreshTokenRequest.getRefreshToken());
     }
 }
