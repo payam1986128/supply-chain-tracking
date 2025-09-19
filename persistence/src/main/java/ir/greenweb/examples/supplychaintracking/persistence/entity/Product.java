@@ -10,7 +10,9 @@ import java.util.UUID;
 @Setter
 @Getter
 @Entity
-@Table(name = "sct_product")
+@Table(name = "sct_product", indexes = {
+        @Index(name = "productManufacturingDateIndex", columnList = "manufacturingDate DESC"),
+})
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
