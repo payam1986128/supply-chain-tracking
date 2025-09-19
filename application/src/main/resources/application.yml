@@ -1,6 +1,7 @@
 spring:
   application:
     name: supply-chain-tracking
+    version: @project.version@
   jpa:
     hibernate:
       ddl-auto: none
@@ -22,7 +23,3 @@ security:
       - /api/auth/login
       - /api/auth/users
       - /api/auth/access-token
-
-server:
-  servlet:
-    context-path: /api

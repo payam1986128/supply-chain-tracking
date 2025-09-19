@@ -32,8 +32,13 @@ class SecurityConfiguration {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        req -> req.requestMatchers("/api/auth/login/**", "/api/auth/users", "/api/auth/access-token")
-                                .permitAll()
+                        req -> req.requestMatchers(
+                                    "/api/auth/login/**",
+                                    "/api/auth/users",
+                                    "/api/auth/access-token",
+                                    "/v3/api-docs*/**",
+                                    "/swagger-ui/**"
+                                ).permitAll()
                                 .requestMatchers("/api/products").hasAuthority("MANUFACTURER")
                                 .requestMatchers("/api/products/{id}").hasAuthority("MANUFACTURER")
                                 .requestMatchers(HttpMethod.POST, "/api/products/{id}/movements").hasAuthority("LOGISTICS_PROVIDER")
