@@ -9,7 +9,9 @@ import ir.greenweb.examples.supplychaintracking.contract.presentation.dto.produc
 import ir.greenweb.examples.supplychaintracking.business.exception.InvalidUUIDException;
 import ir.greenweb.examples.supplychaintracking.business.exception.ProductNotFoundException;
 import ir.greenweb.examples.supplychaintracking.business.mapper.ProductBusinessMapper;
+import jakarta.persistence.LockModeType;
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +26,7 @@ public class ProductService implements ProductServiceApi {
     private final ProductDaoApi productDao;
     private final ProductBusinessMapper productMapper;
 
+    @Lock(LockModeType.OPTIMISTIC)
     @Override
     public ProductGetResponse getProduct(String id) {
         UUID productId = parseId(id);
@@ -45,6 +48,7 @@ public class ProductService implements ProductServiceApi {
         return new ProductCreationResponse(productMapper.toString(id));
     }
 
+    @Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT)
     @Override
     public void update(String id, ProductEditionRequest request) {
         UUID productId = parseId(id);

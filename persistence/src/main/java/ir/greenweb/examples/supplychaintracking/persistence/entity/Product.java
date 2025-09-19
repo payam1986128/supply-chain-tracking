@@ -20,4 +20,7 @@ public class Product {
     private String type;
     private LocalDateTime manufacturingDate;
     private String origin;
+
+    @Version
+    private int version;
 }
