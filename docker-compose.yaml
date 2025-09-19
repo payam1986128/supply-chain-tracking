@@ -1,7 +1,18 @@
 services:
+  supply-chain-tracking-system:
+    build: .
+    container_name: supply-chain-tracking-system
+    depends_on:
+      - postgresql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgreshost:5432/sct
+    ports:
+      - "8080:8080"
+
   postgresql:
     image: postgres
     container_name: postgresql
+    hostname: postgreshost
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: secret
@@ -9,8 +20,3 @@ services:
     ports:
       - "5432:5432"
     restart: unless-stopped
-
-  supply-chain-tracking-app:
-    build: .
-    ports:
-      - 8080:8080
