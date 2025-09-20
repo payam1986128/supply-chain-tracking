@@ -9,7 +9,7 @@
    $ docker compose run
 
 
-### test with postman:<br/>
+### Test with postman:<br/>
 Import postman collection file in the root of project to the postman GUI.<br/>
 The access token would be set after calling login service.<br/>
 Then you can call the other service without setting access token in Authorization header.
@@ -22,14 +22,16 @@ Then you can call the other service without setting access token in Authorizatio
 4. Spring security starter: to prepare authentication and authorization
 5. Spring data JPA starter: to use Hibernate ORM
 6. Spring validation starter: to validate request data
-7. Lombok: to reduce boilerplate of POJOs
-8. Mapstruct: to map objects to each other
-9. QueryDsl: to prepare dynamic query
-10. JWT: to configure bearer token auth type
-11. Maven: to build modules and project
-12. Docker: to build project in the container
-13. Docker compose: to build and initialize services in the container based environment
-14. postgresql: to query and command data
+7. Spring test starter: to integrate tests
+8. Rest assured: to assert service responses
+9. Lombok: to reduce boilerplate of POJOs
+10. Mapstruct: to map objects to each other
+11. QueryDsl: to prepare dynamic query
+12. JWT: to configure bearer token auth type
+13. Maven: to build modules and project
+14. Docker: to build project in the container
+15. Docker compose: to build and initialize services in the container based environment
+16. postgresql: to query and command data
 
 
 ### Architecture:<br/>
