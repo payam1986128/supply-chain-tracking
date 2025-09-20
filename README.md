@@ -1,13 +1,40 @@
-# supply-chain-tracking
+# Supply Chain Tracking System
 
-### run the application:<br/>
-0. install and configure postgre db
-1. set connection string in project application.yml
+### Run the application:<br/>
+0. Install and configure postgre db
+1. Set connection string in project application.yml
 2. $ mvn clean package
 3. $ java -jar application-{version}.jar
-4. or can use below command:<br/>
+4. Or can use below command:<br/>
    $ docker compose run
 
 
 ### test with postman:<br/>
-import postman collection file in the root of project to the postman GUI
+Import postman collection file in the root of project to the postman GUI.<br/>
+The access token would be set after calling login service.<br/>
+Then you can call the other service without setting access token in Authorization header.
+
+
+### Frameworks and used libraries:<br/>
+1. Java 17
+2. Spring boot v3.5.5
+3. Spring web starter: to prepare REST services
+4. Spring security starter: to prepare authentication and authorization
+5. Spring data JPA starter: to use Hibernate ORM
+6. Spring validation starter: to validate request data
+7. Lombok: to reduce boilerplate of POJOs
+8. Mapstruct: to map objects to each other
+9. QueryDsl: to prepare dynamic query
+10. JWT: to configure bearer token auth type
+11. Maven: to build modules and project
+12. Docker: to build project in the container
+13. Docker compose: to build and initialize services in the container based environment
+14. postgresql: to query and command data
+
+
+### Architecture:<br/>
+The architecture of this project is according to **Clean Architecture** to using benefits of Onion design.<br/>
+This design help isolating and hiding entities and their relationships implementation from outside clients.<br/>
+Two notes to consider is that:<br/>
+1. Dependency of **business** and **persistence** modules are inversed. To preventing entities from being used in business module.
+2. Dependency of persistence objects are injected by Spring container to business module.
